@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "175017926220",
+    "firebase_url": "https://izgubljenonadjeno-962eb.firebaseio.com",
+    "project_id": "izgubljenonadjeno-962eb",
+    "storage_bucket": "izgubljenonadjeno-962eb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:175017926220:android:1fba9cb6802219dd",
+        "android_client_info": {
+          "package_name": "com.ephoenixdev.izgubljenonadjeno"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "175017926220-7mto4iikqa7rvso366jdl0ll3b0uk4mf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ephoenixdev.izgubljenonadjeno",
+            "certificate_hash": "8e493db236d58ad04094a88a6ca8daa9822a8064"
+          }
+        },
+        {
+          "client_id": "175017926220-5e0fu67f9dsh8r1ume30gft7pchvsv83.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsNsWkfRYM9fVUIgaW8wWV0QrJYBR1wM8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "175017926220-5e0fu67f9dsh8r1ume30gft7pchvsv83.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

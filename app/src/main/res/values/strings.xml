@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Izgubljeno Nadjeno</string>
+    <string name="title_activity_home">Izgubljeno Nadjeno</string>
+    <string name="title_home">Početna</string>
+    <string name="title_lost">Izgubljeno</string>
+    <string name="title_found">Nađeno</string>
+    <string name="title_lоst">Izgubljeno</string>
+    <string name="title_activity_view_item">ViewItemActivity</string>
+</resources>
