@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,10 +26,11 @@
             android:label="@string/title_activity_view_item" />
         <activity
             android:name=".RegisterActivity"
-            android:label="@string/title_activity_registracija"/>
+            android:label="@string/title_activity_registracija" />
         <activity
             android:name=".LoginActivity"
-            android:label="@string/title_activity_prijava"/>
+            android:label="@string/title_activity_prijava" />
+        <activity android:name=".NewRecordActivity"></activity>
     </application>
 
 </manifest>

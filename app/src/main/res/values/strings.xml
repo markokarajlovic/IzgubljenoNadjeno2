@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Izgubljeno Pronađeno</string>
     <string name="title_activity_home">Izgubljeno Pronađeno</string>
-    <string name ="title_activity_registracija">Registracija</string>
+    <string name="title_activity_registracija">Registracija</string>
     <string name="title_activity_prijava">Prijava</string>
     <string name="title_home">Početna</string>
     <string name="title_lost">Izgubljeno</string>

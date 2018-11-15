@@ -3,6 +3,8 @@ package com.ephoenixdev.izgubljenonadjeno.models;
 public class FoundModel {
 
     private String foundId;
+    private String userId;
+    private String title;
     private String place;
     private String phone;
     private String description;
@@ -13,8 +15,10 @@ public class FoundModel {
 
     }
 
-    public FoundModel(String foundId, String place, String phone, String description, String image, String date) {
+    public FoundModel(String foundId, String userId, String title, String place, String phone, String description, String image, String date) {
         this.foundId = foundId;
+        this.userId = userId;
+        this.title = title;
         this.place = place;
         this.phone = phone;
         this.description = description;
@@ -68,5 +72,21 @@ public class FoundModel {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
