@@ -2,6 +2,7 @@ package com.ephoenixdev.izgubljenonadjeno.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,11 @@ import android.widget.TextView;
 import com.ephoenixdev.izgubljenonadjeno.R;
 import com.ephoenixdev.izgubljenonadjeno.ViewItemActivity;
 import com.ephoenixdev.izgubljenonadjeno.models.FoundModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +42,29 @@ public class ListOfFoundAdapter extends RecyclerView.Adapter<ListOfFoundAdapter.
     }
 
     @Override
-    public void onBindViewHolder(@NonNull FoundViewHolder adViewHolder, int i) {
+    public void onBindViewHolder(@NonNull FoundViewHolder foundViewHolder, int i) {
 
+        FoundModel foundModel = foundModelList.get(i);
+
+        StorageReference mStorageRef = FirebaseStorage.getInstance().getReference("FoundImages/" + foundModel.getFoundId() + "/" +foundModel.getImage());
+
+        foundViewHolder.textViewTitle.setText(foundModel.getTitle());
+        foundViewHolder.textViewPlace.setText(foundModel.getPlace());
+        foundViewHolder.textViewPhone.setText(foundModel.getPhone());
+
+        final ImageView imageView = foundViewHolder.imageView;
+
+        mStorageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().into(imageView);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 
@@ -74,7 +101,10 @@ public class ListOfFoundAdapter extends RecyclerView.Adapter<ListOfFoundAdapter.
             FoundModel foundModel = this.foundModelList.get(position);
 
             Intent intent = new Intent(this.ctx, ViewItemActivity.class);
-            intent.putExtra("lostId",foundModel.getFoundId());
+            intent.putExtra("foundOrLost",2);
+            intent.putExtra("foundId",foundModel.getFoundId());
+            intent.putExtra("userId",foundModel.getUserId());
+            intent.putExtra("title",foundModel.getTitle());
             intent.putExtra("place",foundModel.getPlace());
             intent.putExtra("phone",foundModel.getPhone());
             intent.putExtra("discription",foundModel.getDescription());

@@ -11,16 +11,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class HomeFragment extends Fragment {
 
     Button btnRegister, btnLogin;
     FloatingActionButton fab;
+
+    private FirebaseAuth mAuth;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home,container,false);
+
+        mAuth = FirebaseAuth.getInstance();
 
         btnLogin = view.findViewById(R.id.btnLogin);
         btnRegister = view.findViewById(R.id.btnRegister);
@@ -52,5 +59,20 @@ public class HomeFragment extends Fragment {
                 });
 
         return view;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if(currentUser == null){
+            btnLogin.setVisibility(View.VISIBLE);
+            btnRegister.setVisibility(View.VISIBLE);
+        }else {
+            btnLogin.setVisibility(View.GONE);
+            btnRegister.setVisibility(View.GONE);
+        }
     }
 }

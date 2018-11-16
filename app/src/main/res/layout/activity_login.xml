@@ -18,19 +18,30 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <EditText
             android:id="@+id/editTextLogInEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textEmailAddress" />
+            android:inputType="textEmailAddress"
+            android:hint="E-mail"/>
+        </android.support.design.widget.TextInputLayout>
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:passwordToggleEnabled="true">
         <EditText
             android:id="@+id/editTextLogInPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPassword" />
+            android:inputType="textPassword"
+            android:hint="Lozinka"/>
+        </android.support.design.widget.TextInputLayout>
 
         <TextView
             android:id="@+id/textViewLogIn"
@@ -39,9 +50,11 @@
 
         <Button
             android:id="@+id/buttonLogInOK"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="Prijavite se"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <ProgressBar

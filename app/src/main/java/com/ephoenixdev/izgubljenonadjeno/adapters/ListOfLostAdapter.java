@@ -2,6 +2,7 @@ package com.ephoenixdev.izgubljenonadjeno.adapters;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,11 @@ import android.widget.TextView;
 import com.ephoenixdev.izgubljenonadjeno.R;
 import com.ephoenixdev.izgubljenonadjeno.ViewItemActivity;
 import com.ephoenixdev.izgubljenonadjeno.models.LostModel;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,8 +42,29 @@ public class ListOfLostAdapter extends RecyclerView.Adapter<ListOfLostAdapter.Lo
     }
 
     @Override
-    public void onBindViewHolder(@NonNull LostViewHolder adViewHolder, int i) {
+    public void onBindViewHolder(@NonNull LostViewHolder lostViewHolder, int i) {
 
+        LostModel lostModel = lostModelList.get(i);
+
+        StorageReference mStorageRef = FirebaseStorage.getInstance().getReference("LostImages/" + lostModel.getLostId() + "/" +lostModel.getImage());
+
+        lostViewHolder.textViewTitle.setText(lostModel.getTitle());
+        lostViewHolder.textViewPlace.setText(lostModel.getPlace());
+        lostViewHolder.textViewPhone.setText(lostModel.getPhone());
+
+        final ImageView imageView = lostViewHolder.imageView;
+
+        mStorageRef.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                Picasso.get().load(uri).fit().into(imageView);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+
+            }
+        });
 
     }
 
@@ -74,7 +101,10 @@ public class ListOfLostAdapter extends RecyclerView.Adapter<ListOfLostAdapter.Lo
             LostModel lostModel = this.lostModelList.get(position);
 
             Intent intent = new Intent(this.ctx, ViewItemActivity.class);
+            intent.putExtra("foundOrLost",1);
             intent.putExtra("lostId",lostModel.getLostId());
+            intent.putExtra("userId",lostModel.getUserId());
+            intent.putExtra("title",lostModel.getTitle());
             intent.putExtra("place",lostModel.getPlace());
             intent.putExtra("phone",lostModel.getPhone());
             intent.putExtra("discription",lostModel.getDescription());

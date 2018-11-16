@@ -19,37 +19,55 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_gravity="top|center"
-            app:srcCompat="@mipmap/ic_launcher_round" />
+            app:srcCompat="@drawable/load_screen" />
 
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/editTextNewRecordTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
             android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Naslov"/>
+        </android.support.design.widget.TextInputLayout>
 
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
         <EditText
             android:id="@+id/editTextNewRecordPlace"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:hint="Mesto" />
+</android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/editTextNewRecordDiscription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:ems="10"
+            android:hint="Duži Opis"
             android:inputType="textMultiLine" />
+</android.support.design.widget.TextInputLayout>
+<android.support.design.widget.TextInputLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/editTextNewRecordPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="phone" />
+            android:inputType="phone"
+            android:hint="Telefon"/>
+    </android.support.design.widget.TextInputLayout>
 
         <RadioGroup
             android:id="@+id/radiogroup"
@@ -75,9 +93,11 @@
 
         <Button
             android:id="@+id/btnNewRecord"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:text="POSTAVI"
+            android:textSize="18sp" />
     </LinearLayout>
 
 </ScrollView>
