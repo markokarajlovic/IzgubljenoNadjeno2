@@ -1,9 +1,12 @@
 package com.ephoenixdev.izgubljenonadjeno;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,6 +23,7 @@ public class ViewItemActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private TextView viewTitle, viewPlace, viewDiscription, viewPhone;
     private ImageView imageView;
+    private ImageButton btnShare;
     private String title, place, discription, image, phone, foundId, lostId, userId;
     private int foundOrLost;
 
@@ -38,7 +42,7 @@ public class ViewItemActivity extends AppCompatActivity {
         viewDiscription = findViewById(R.id.textViewViewDiscription);
         viewPhone = findViewById(R.id.textViewViewPhone);
         imageView = findViewById(R.id.imageViewViewImage);
-
+        btnShare = findViewById(R.id.imageButtonViewShare);
 
 
         userId = getIntent().getStringExtra("userId");
@@ -63,6 +67,18 @@ public class ViewItemActivity extends AppCompatActivity {
             foundId = getIntent().getStringExtra("found");
             setImageOfFound(foundId,image);
         }
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name);
+                intent.putExtra(Intent.EXTRA_TEXT, discription);
+
+                startActivity(Intent.createChooser(intent, "Izaberite"));
+            }
+        });
 
 
 

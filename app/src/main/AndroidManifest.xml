@@ -30,7 +30,11 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_prijava" />
-        <activity android:name=".NewRecordActivity"></activity>
+        <activity android:name=".NewRecordActivity" />
+        <activity android:name=".LostActivity" />
+        <activity android:name=".FoundActivity" />
+        <activity android:name=".ContactActivity" />
+        <activity android:name=".AboutusActivity"></activity>
     </application>
 
 </manifest>

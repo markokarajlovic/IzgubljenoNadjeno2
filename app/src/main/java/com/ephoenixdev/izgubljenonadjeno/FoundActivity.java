@@ -1,14 +1,13 @@
 package com.ephoenixdev.izgubljenonadjeno;
 
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.ephoenixdev.izgubljenonadjeno.adapters.ListOfFoundAdapter;
 import com.ephoenixdev.izgubljenonadjeno.models.FoundModel;
@@ -23,27 +22,66 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoundFragment extends Fragment {
+public class FoundActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
 
+    private ImageButton btnHome, btnShare, btnAboutUs, btnContact;
     private RecyclerView recyclerView;
     private ListOfFoundAdapter listOfFoundAdapter;
     private List<FoundModel> foundModelList;
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        View view = inflater.inflate(R.layout.fragment_found,container,false);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_found);
 
         mAuth = FirebaseAuth.getInstance();
+        btnHome = findViewById(R.id.imageButtonLostHome);
+        btnShare = findViewById(R.id.imageButtonLostShare);
+        btnAboutUs = findViewById(R.id.imageButtonLostAboutUs);
+        btnContact = findViewById(R.id.imageButtonLostContact);
 
-        recyclerView = view.findViewById(R.id.recyclerViewFound);
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoundActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String text = getResources().getString(R.string.share_text);
+                intent.putExtra(Intent.EXTRA_SUBJECT, R.string.app_name);
+                intent.putExtra(Intent.EXTRA_TEXT, text);
+
+                startActivity(Intent.createChooser(intent, "Izaberite"));
+            }
+        });
+
+        btnAboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoundActivity.this, AboutusActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(FoundActivity.this, ContactActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        recyclerView = findViewById(R.id.recyclerViewFound);
 
         createList();
-
-        return view;
     }
 
     @Override
@@ -56,9 +94,9 @@ public class FoundFragment extends Fragment {
 
 
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(FoundActivity.this));
         foundModelList = new ArrayList<>();
-        listOfFoundAdapter = new ListOfFoundAdapter(getActivity(),foundModelList);
+        listOfFoundAdapter = new ListOfFoundAdapter(FoundActivity.this,foundModelList);
         recyclerView.setAdapter(listOfFoundAdapter);
 
         ValueEventListener valueEventListener = new ValueEventListener() {
