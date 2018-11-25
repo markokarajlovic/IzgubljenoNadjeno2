@@ -169,6 +169,7 @@ public class NewRecordActivity extends AppCompatActivity {
             Toast.makeText(NewRecordActivity.this, "Postavljeno", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(NewRecordActivity.this, HomeActivity.class);
             startActivity(intent);
+            finish();
         } else {
             Toast.makeText(NewRecordActivity.this, "Neuspešno postavljanje", Toast.LENGTH_SHORT).show();
         }
