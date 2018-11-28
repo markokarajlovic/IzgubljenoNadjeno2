@@ -31,7 +31,7 @@
 
         <Button
             android:id="@+id/btnRegister"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Registruj se"
@@ -75,6 +75,8 @@
             android:id="@+id/btnHomeLost"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:text="@string/title_lost" />
 
@@ -82,6 +84,8 @@
             android:id="@+id/btnHomeFound"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button"
+            android:textSize="18sp"
             android:layout_weight="1"
             android:text="@string/title_found" />
     </LinearLayout>
@@ -139,6 +143,7 @@
             android:id="@+id/imageButtonHomeHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_home_black_24dp" />
 
@@ -146,6 +151,7 @@
             android:id="@+id/imageButtonHomeShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_share_black_24dp" />
 
@@ -153,6 +159,7 @@
             android:id="@+id/imageButtonHomeAboutUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_group_black_24dp" />
 
@@ -160,6 +167,7 @@
             android:id="@+id/imageButtonHomeContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_contact_mail_black_24dp" />
     </LinearLayout>

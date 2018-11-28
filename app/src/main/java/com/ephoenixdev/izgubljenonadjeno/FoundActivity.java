@@ -37,10 +37,10 @@ public class FoundActivity extends AppCompatActivity {
         setContentView(R.layout.activity_found);
 
         mAuth = FirebaseAuth.getInstance();
-        btnHome = findViewById(R.id.imageButtonLostHome);
-        btnShare = findViewById(R.id.imageButtonLostShare);
-        btnAboutUs = findViewById(R.id.imageButtonLostAboutUs);
-        btnContact = findViewById(R.id.imageButtonLostContact);
+        btnHome = findViewById(R.id.imageButtonFoundHome);
+        btnShare = findViewById(R.id.imageButtonFoundShare);
+        btnAboutUs = findViewById(R.id.imageButtonFoundAboutUs);
+        btnContact = findViewById(R.id.imageButtonFoundContact);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -37,6 +37,7 @@
             android:id="@+id/imageButtonFoundHome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_home_black_24dp" />
 
@@ -44,6 +45,7 @@
             android:id="@+id/imageButtonFoundShare"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_share_black_24dp" />
 
@@ -51,6 +53,7 @@
             android:id="@+id/imageButtonFoundAboutUs"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_group_black_24dp" />
 
@@ -58,6 +61,7 @@
             android:id="@+id/imageButtonFoundContact"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton.Icon"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_contact_mail_black_24dp" />
     </LinearLayout>

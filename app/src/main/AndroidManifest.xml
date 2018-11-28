@@ -30,11 +30,16 @@
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_prijava" />
-        <activity android:name=".NewRecordActivity" />
-        <activity android:name=".LostActivity" />
-        <activity android:name=".FoundActivity" />
-        <activity android:name=".ContactActivity" />
-        <activity android:name=".AboutusActivity"></activity>
+        <activity android:name=".NewRecordActivity"
+            android:label="@string/title_activity_nov_upis"/>
+        <activity android:name=".LostActivity"
+            android:label="@string/title_activity_izgubljeno" />
+        <activity android:name=".FoundActivity"
+        android:label="@string/title_activity_pronadjeno" />
+        <activity android:name=".ContactActivity"
+            android:label="@string/title_activity_kontakt"/>
+        <activity android:name=".AboutusActivity"
+            android:label="@string/title_activity_onama" ></activity>
     </application>
 
 </manifest>

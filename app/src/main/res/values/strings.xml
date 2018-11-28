@@ -13,4 +13,9 @@
 
     <string name="onama_opis">Koliko puta ste nešto izgubili? Neku dragu uspomenu, kljuceve, dokumenta? Ili ste pronašli iste i želeli da vratite vlasniku, ali niste znali kako. Ova aplikacija uz pomoć Vašeg objavljenog oglasa Vam pomaže i omogućava baš to. Objavite izgubljenu ili pronađenu stvar, nađite njenog vlasnika ili olakšajte sebi.</string>
     <string name="share_text">link Aplikacije</string>
+    <string name="title_activity_izgubljeno">Izgubljeno</string>
+    <string name="title_activity_pronadjeno">Pronađeno</string>
+    <string name="title_activity_kontakt">Kontakt</string>
+    <string name="title_activity_onama">O nama</string>
+    <string name="title_activity_nov_upis">Unos nove stavke</string>
 </resources>
