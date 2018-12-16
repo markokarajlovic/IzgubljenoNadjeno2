@@ -6,8 +6,10 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
+import android.widget.Spinner;
 
 import com.ephoenixdev.izgubljenonadjeno.adapters.ListOfFoundAdapter;
 import com.ephoenixdev.izgubljenonadjeno.models.FoundModel;
@@ -22,14 +24,17 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FoundActivity extends AppCompatActivity {
+public class FoundActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private FirebaseAuth mAuth;
 
     private ImageButton btnHome, btnShare, btnAboutUs, btnContact;
+    private Spinner spinner;
     private RecyclerView recyclerView;
     private ListOfFoundAdapter listOfFoundAdapter;
     private List<FoundModel> foundModelList;
+
+    private String drzava = "Srbija";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,15 @@ public class FoundActivity extends AppCompatActivity {
         btnShare = findViewById(R.id.imageButtonFoundShare);
         btnAboutUs = findViewById(R.id.imageButtonFoundAboutUs);
         btnContact = findViewById(R.id.imageButtonFoundContact);
+        spinner = findViewById(R.id.spinnerFound);
+
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.drzave, android.R.layout.simple_spinner_item);
+
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(this);
 
         btnHome.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,7 +106,6 @@ public class FoundActivity extends AppCompatActivity {
 
     private void createList() {
 
-
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(FoundActivity.this));
         foundModelList = new ArrayList<>();
@@ -118,7 +131,25 @@ public class FoundActivity extends AppCompatActivity {
             }
         };
 
-        Query query = FirebaseDatabase.getInstance().getReference("Found");
+        Query query;
+
+        switch (drzava){
+            case "Srbija":
+                query = FirebaseDatabase.getInstance().getReference("Found").orderByChild("state").equalTo(drzava);
+                break;
+            case "Bosna i Hercegovina":
+                query = FirebaseDatabase.getInstance().getReference("Found").orderByChild("state").equalTo(drzava);
+                break;
+            case "Crna Gora":
+                query = FirebaseDatabase.getInstance().getReference("Found").orderByChild("state").equalTo(drzava);
+                break;
+            case "Hrvatska":
+                query = FirebaseDatabase.getInstance().getReference("Found").orderByChild("state").equalTo(drzava);
+                break;
+                default:
+                    query = FirebaseDatabase.getInstance().getReference("Found");
+        }
+
         query.addListenerForSingleValueEvent(valueEventListener);
 
         recyclerView.setOnClickListener(new View.OnClickListener() {
@@ -135,5 +166,17 @@ public class FoundActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+        drzava =  item;
+        createList();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

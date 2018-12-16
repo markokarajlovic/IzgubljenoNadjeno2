@@ -7,13 +7,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity {
 
-    private Button btnLost, btnFound, btnLogin, btnRegister;
+    private Button btnLost, btnFound, btnLogin, btnRegister, btnLogout;
     private ImageButton btnHome, btnShare, btnAboutUs, btnContact;
 
     private FloatingActionButton fab;
@@ -29,6 +30,7 @@ public class HomeActivity extends AppCompatActivity {
 
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
+        btnLogout = findViewById(R.id.btnHomeLogout);
         btnLost = findViewById(R.id.btnHomeLost);
         btnFound = findViewById(R.id.btnHomeFound);
         fab = findViewById(R.id.fabHomeAdd);
@@ -36,6 +38,15 @@ public class HomeActivity extends AppCompatActivity {
         btnShare = findViewById(R.id.imageButtonHomeShare);
         btnAboutUs = findViewById(R.id.imageButtonHomeAboutUs);
         btnContact = findViewById(R.id.imageButtonHomeContact);
+
+        btnLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mAuth.signOut();
+                Toast.makeText(HomeActivity.this, "Izlogovani ste", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(HomeActivity.this, HomeActivity.class));
+            }
+        });
 
         btnLost.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -99,6 +110,22 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        btnLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(HomeActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
 
     @Override
@@ -110,9 +137,11 @@ public class HomeActivity extends AppCompatActivity {
         if(currentUser == null){
             btnLogin.setVisibility(View.VISIBLE);
             btnRegister.setVisibility(View.VISIBLE);
+            btnLogout.setVisibility(View.GONE);
         }else {
             btnLogin.setVisibility(View.GONE);
             btnRegister.setVisibility(View.GONE);
+            btnLogout.setVisibility(View.VISIBLE);
         }
     }
 

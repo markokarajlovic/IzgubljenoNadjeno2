@@ -10,11 +10,14 @@ import android.text.TextUtils;
 import android.os.Handler;
 import android.view.View;
 import android.webkit.MimeTypeMap;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.ephoenixdev.izgubljenonadjeno.models.FoundModel;
@@ -35,13 +38,14 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class NewRecordActivity extends AppCompatActivity {
+public class NewRecordActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private ImageView EditImageView;
     private EditText EditTitle, EditDiscription, EditPlace, EditPhone;
     private Button btn;
     private RadioGroup radioGroup;
     private RadioButton rbLost, rbFound;
+    private Spinner spinner;
 
     private Uri mImageUri;
 
@@ -69,8 +73,18 @@ public class NewRecordActivity extends AppCompatActivity {
         radioGroup = findViewById(R.id.radiogroup);
         rbFound = findViewById(R.id.radioButton2);
         rbLost = findViewById(R.id.radioButton1);
+        spinner = findViewById(R.id.newRecordSpinner);
 
         mAuth = FirebaseAuth.getInstance();
+
+
+        ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
+                R.array.drzave, android.R.layout.simple_spinner_item);
+
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinner.setAdapter(spinnerAdapter);
+
+        spinner.setOnItemSelectedListener(this);
 
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -123,6 +137,7 @@ public class NewRecordActivity extends AppCompatActivity {
             String discription = EditDiscription.getText().toString().trim();
             String phone = EditPhone.getText().toString().trim();
             String place = EditPlace.getText().toString().trim();
+            String state = spinner.getSelectedItem().toString();
 
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
             Date d = new Date();
@@ -135,6 +150,7 @@ public class NewRecordActivity extends AppCompatActivity {
                         idUser,
                         title,
                         place,
+                        state,
                         phone,
                         discription,
                         image,
@@ -148,6 +164,7 @@ public class NewRecordActivity extends AppCompatActivity {
                         idUser,
                         title,
                         place,
+                        state,
                         phone,
                         discription,
                         image,
@@ -235,5 +252,15 @@ public class NewRecordActivity extends AppCompatActivity {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
         currentUser = mAuth.getCurrentUser();
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        String item = parent.getItemAtPosition(position).toString();
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 }

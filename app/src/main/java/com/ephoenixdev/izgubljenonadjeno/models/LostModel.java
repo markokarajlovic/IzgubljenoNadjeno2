@@ -6,6 +6,7 @@ public class LostModel {
     private String userId;
     private String title;
     private String place;
+    private String state;
     private String phone;
     private String description;
     private String image;
@@ -15,11 +16,12 @@ public class LostModel {
 
     }
 
-    public LostModel(String lostId, String userId, String title, String place, String phone, String description, String image, String date) {
+    public LostModel(String lostId, String userId, String title, String place, String state, String phone, String description, String image, String date) {
         this.lostId = lostId;
         this.userId = userId;
         this.title = title;
         this.place = place;
+        this.state = state;
         this.phone = phone;
         this.description = description;
         this.image = image;
@@ -34,12 +36,36 @@ public class LostModel {
         this.lostId = lostId;
     }
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getPlace() {
         return place;
     }
 
     public void setPlace(String place) {
         this.place = place;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 
     public String getPhone() {
@@ -72,21 +98,5 @@ public class LostModel {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 }

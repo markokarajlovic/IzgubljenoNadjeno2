@@ -18,4 +18,11 @@
     <string name="title_activity_kontakt">Kontakt</string>
     <string name="title_activity_onama">O nama</string>
     <string name="title_activity_nov_upis">Unos nove stavke</string>
+
+    <string-array name="drzave">
+        <item>Srbija</item>
+        <item>Bosna i Hercegovina</item>
+        <item>Crna Gora</item>
+        <item>Hrvatska</item>
+    </string-array>
 </resources>
