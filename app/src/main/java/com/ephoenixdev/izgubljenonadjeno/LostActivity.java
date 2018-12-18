@@ -48,14 +48,6 @@ public class LostActivity extends AppCompatActivity implements AdapterView.OnIte
         btnContact = findViewById(R.id.imageButtonLostContact);
         spinner = findViewById(R.id.spinnerLost);
 
-        btnHome.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LostActivity.this, HomeActivity.class);
-                startActivity(intent);
-            }
-        });
-
         ArrayAdapter<CharSequence> spinnerAdapter = ArrayAdapter.createFromResource(this,
                 R.array.drzave, android.R.layout.simple_spinner_item);
 
@@ -63,6 +55,14 @@ public class LostActivity extends AppCompatActivity implements AdapterView.OnIte
         spinner.setAdapter(spinnerAdapter);
 
         spinner.setOnItemSelectedListener(this);
+
+        btnHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LostActivity.this, HomeActivity.class);
+                startActivity(intent);
+            }
+        });
 
         btnShare.setOnClickListener(new View.OnClickListener() {
             @Override

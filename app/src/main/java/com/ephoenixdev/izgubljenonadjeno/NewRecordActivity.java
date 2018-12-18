@@ -100,7 +100,7 @@ public class NewRecordActivity extends AppCompatActivity implements AdapterView.
             }
         });
 
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+        /*radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if (checkedId == R.id.radioButton1) {
@@ -111,7 +111,7 @@ public class NewRecordActivity extends AppCompatActivity implements AdapterView.
                     mStorageRef = FirebaseStorage.getInstance().getReference("FoundImages");
                 }
             }
-        });
+        });*/
 
     }
     private void newRecord() {
@@ -124,7 +124,7 @@ public class NewRecordActivity extends AppCompatActivity implements AdapterView.
             Toast.makeText(NewRecordActivity.this, "Morate biti ulogovani!", Toast.LENGTH_SHORT).show();
         } else {
 
-            recordId = mDatabaseReference.push().getKey();
+
 
             String idUser = currentUser.getUid().toString();
             String title = EditTitle.getText().toString().trim();
@@ -145,6 +145,12 @@ public class NewRecordActivity extends AppCompatActivity implements AdapterView.
 
 
             if(rbFound.isChecked()) {
+
+                mDatabaseReference = FirebaseDatabase.getInstance().getReference("Found");
+                mStorageRef = FirebaseStorage.getInstance().getReference("FoundImages");
+
+                recordId = mDatabaseReference.push().getKey();
+
                 FoundModel model = new FoundModel(
                         recordId,
                         idUser,
@@ -159,6 +165,12 @@ public class NewRecordActivity extends AppCompatActivity implements AdapterView.
             }
 
             if(rbLost.isChecked()) {
+
+                mDatabaseReference = FirebaseDatabase.getInstance().getReference("Lost");
+                mStorageRef = FirebaseStorage.getInstance().getReference("LostImages");
+
+                recordId = mDatabaseReference.push().getKey();
+
                 LostModel model = new LostModel(
                         recordId,
                         idUser,
